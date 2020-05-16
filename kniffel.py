@@ -179,11 +179,24 @@ class Evaluator:
 #     unique, counts = numpy.unique(arr_stuff, return_counts=True)
 #     return(dict(zip(unique, counts))
 
-class Würfler():
+class Würfler:
     def __init__(self):
-        self.curr_throw = curr_throw
-        self.throws_left = throws_left
+        self.throwcount = 3
 
+    def throw(self, n_dice):
+        if self.throwcount > 0 and n_dice > 0:
+            self.n_dice = n_dice
+            self.throw_res = np.random.randint(1,7, n_dice)
+            self.throwcount -= 1
+
+            return self.throw_res
+        else:
+            print("Keine Würfe übrig!")
+
+    def get_vals(self,vals):
+        self.n_dice -= len(vals)
+
+        return vals
 
 
 
@@ -200,8 +213,11 @@ def main():
     probeAnsage = "FullHouse"
     test.interaction(probeWurf, probeAnsage)
     test.calcPoints(verbose=True)
-
-
+    test2 = Würfler()
+    print(test2.throw(5))
+    print(test2.throw(5))
+    print(test2.throw(5))
+    test2.throw(5)
 if __name__ == "__main__":
     main()
     pass
