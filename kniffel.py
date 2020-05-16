@@ -197,7 +197,33 @@ class Würfler:
 
         return vals, self.n_dice
 
+class expected_values:
+    #für die werte oben (einser, zweier usw) nach erstem wurd
+    def calc_numbers_first_throw:
+        total_exv = []
+        for i in categories:
+            for n in rows:
+                if n < 5:
+                    add = []
+                    for b in range(0, 5 - n + 1):
+                        in_val = ((1 / 6) ** b) * ((5 / 6) ** (5 - n - b))
+                        if (5 - (n + b)) > 0:
+                            for c in range(0, 5 - (n + b) + 1):
+                                add.append(in_val * ((1 / 6) ** (c)) * (5 / 6) ** (5 - (n + b + c)) * (b + c) * i)
+                        else:
+                            add.append(in_val * b * i)
+                    total_exv.append(sum(add) + n * i)
+                else:
+                    total_exv.append(n * i)
 
+        total_exv = np.array(total_exv)
+        total_exv = total_exv.reshape((6, 6))
+        exv_table = pd.DataFrame(total_exv.T, index=rows, columns=categories)
+        #rows --> zahlen nach dem ersten wurf, column einser zweier usw, data --> expected value
+
+#expected value multiplyer für 0 würfe oben 2.1062350999999997
+#prob gr. straße 0.2491861 -- exp value 9.967444
+#prob kl. straße 0.545356 -- exp value 16.36068
 
 
 def main():
