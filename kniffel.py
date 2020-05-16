@@ -222,7 +222,7 @@ class expected_values:
         #rows --> zahlen nach dem ersten wurf, column einser zweier usw, data --> expected value
 
 #expected value multiplyer für 0 würfe oben 2.1062350999999997
-# probabilities for 1,2,3,4,5 - [0.0649394, 0.2363594, 0.3438563, 0.2504827, 0.091096 , 0.0132662]
+# probabilities for 0, 1,2,3,4,5 - [0.0649394, 0.2363594, 0.3438563, 0.2504827, 0.091096 , 0.0132662]
 #prob gr. straße 0.2491861 -- exp value 9.967444
 #prob kl. straße 0.545356 -- exp value 16.36068
 
