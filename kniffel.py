@@ -185,7 +185,6 @@ class Würfler:
 
     def throw(self, n_dice):
         if self.throwcount > 0 and n_dice > 0:
-            self.n_dice = n_dice
             self.throw_res = np.random.randint(1,7, n_dice)
             self.throwcount -= 1
 
@@ -196,7 +195,7 @@ class Würfler:
     def get_vals(self,vals):
         self.n_dice -= len(vals)
 
-        return vals
+        return vals, self.n_dice
 
 
 
